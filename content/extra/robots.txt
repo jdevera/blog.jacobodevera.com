@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /category/
+Disallow: /feeds/
+Disallow: /images/
+Disallow: /tag/
+Disallow: /theme/
