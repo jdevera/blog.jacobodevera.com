@@ -1,4 +1,4 @@
-pelican
+-e git+https://github.com/getpelican/pelican.git#egg=pelican-dev
 markdown
 typogrify
 fabric
