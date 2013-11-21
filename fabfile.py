@@ -9,7 +9,7 @@ DEPLOY_PATH = fab.env.deploy_path
 
 # Remote server configuration
 production = 'jdevera@jacobodevera.com:22'
-dest_path = '/home/jdevera/www/staging.jacobodevera.com'
+dest_path = '/home/jdevera/www/blog.jacobodevera.com'
 
 # Rackspace Cloud Files configuration settings
 fab.env.cloudfiles_username = 'my_rackspace_username'
