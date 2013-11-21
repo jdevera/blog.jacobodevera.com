@@ -1,0 +1,7 @@
+# Jacobo de Vera: The Blog
+
+These are the files that drive my blog:
+
+http://blog.jacobodevera.com
+
+I use Pelican to generate static pages.
