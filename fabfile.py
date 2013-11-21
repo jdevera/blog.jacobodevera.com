@@ -22,6 +22,9 @@ def clean():
         fab.local('rm -rf {deploy_path}'.format(**fab.env))
         fab.local('mkdir {deploy_path}'.format(**fab.env))
 
+def cleanpyc():
+    fab.local("find -name '*.pyc' -delete")
+
 def build():
     fab.local('pelican -s pelicanconf.py')
 
