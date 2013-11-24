@@ -25,7 +25,7 @@ USE_FOLDER_AS_CATEGORY=False
 DEFAULT_CATEGORY='Other'
 DISPLAY_CATEGORIES_ON_MENU=False
 PATH_METADATA=r'(?P<date>\d{4}/\d{2}/\d{2})-.*'
-OUTPUT_SOURCES=True
+OUTPUT_SOURCES=False
 
 ARTICLE_URL='{date:%Y}/{date:%m}/{slug}/'
 ARTICLE_SAVE_AS='{date:%Y}/{date:%m}/{slug}/index.html'
