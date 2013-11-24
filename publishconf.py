@@ -13,8 +13,9 @@ from pelicanconf import *
 SITEURL = 'http://blog.jacobodevera.com'
 RELATIVE_URLS = False
 
-FEED_ALL_ATOM = 'feeds/all.atom.xml'
+FEED_ALL_ATOM = 'jdvblogfeeds/main'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
+FEED_DOMAIN = 'http://feeds.feedburner.com'
 
 DELETE_OUTPUT_DIRECTORY = True
 
