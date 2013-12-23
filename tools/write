@@ -9,8 +9,17 @@ function completions()
     find $ARTICLES/ -type f | sed -e "s@$ARTICLES/@@"
 }
 
+function drafts()
+{
+     ack -il 'status\s*:\s*draft' $ARTICLES | sed -e "s@$ARTICLES/@@"
+}
+
 if [[ $1 == '--complete' ]]; then
     completions
+    exit 0
+fi
+if [[ $1 == '--drafts' ]]; then
+    drafts
     exit 0
 fi
 

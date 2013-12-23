@@ -13,4 +13,15 @@ __complete_write()
     write --complete | grep --color=auto "^$2.*"
 }
 
+draft()
+{
+    write "$@"
+}
+
+__complete_draft()
+{
+    write --drafts |  grep --color=auto "^$2.*"
+}
+
 complete -C __complete_write -o default write
+complete -C __complete_draft -o default draft
