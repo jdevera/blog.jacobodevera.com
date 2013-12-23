@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+TOOLSDIR="$(dirname $0)"
+BASE="$(dirname $TOOLSDIR)"
+ARTICLES="$BASE/content/articles"
+
+function completions()
+{
+    find $ARTICLES/ -type f | sed -e "s@$ARTICLES/@@"
+}
+
+if [[ $1 == '--complete' ]]; then
+    completions
+    exit 0
+fi
+
+file="$1"
+if [[ ! -e $file ]]; then
+    file="$ARTICLES/$file"
+fi
+
+if [[ ! -e $file ]]; then
+    echo "Could not find file: $file" >&2
+    exit 1
+fi
+
+gvim +"so $TOOLSDIR/avimrc" "$file" >/dev/null 2>&1
+

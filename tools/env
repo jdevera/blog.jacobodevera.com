@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+export PROJECT=$(cat $VIRTUAL_ENV/.project)
+export PATH="$PROJECT/tools:$PATH"
+
+cdp()
+{
+    cd "$PROJECT"
+}
+
+__complete_write()
+{
+    write --complete | grep --color=auto "^$2.*"
+}
+
+complete -C __complete_write -o default write

@@ -1,0 +1,87 @@
+function! PadWindow()
+    only
+    leftabove vnew
+    set readonly
+    wincmd l
+    rightbelow vnew
+    set readonly
+    wincmd h
+    vertical resize 80
+    let g:writing_padded_window=1
+endfunction
+
+function! UnpadWindow()
+    wincmd t
+    wincmd l
+    only
+    let g:writing_padded_window=0
+endfunction
+
+function! TogglePadWindow()
+    if exists('g:writing_padded_window') && g:writing_padded_window
+        call UnpadWindow()
+    else
+        call PadWindow()
+    endif
+endfunction
+
+
+
+function! ToggleEol()
+    if exists('g:writing_eol_is_on') && g:writing_eol_is_on
+        set nolist
+        hi NonText guifg=Black
+        let g:writing_eol_is_on = 0
+    else
+        set list
+        hi NonText guifg=Gray
+        let g:writing_eol_is_on = 1
+    endif
+endfunction
+
+function! Color()
+    hi NonText guibg=Black guifg=Black ctermfg=None ctermbg=None
+    hi vertsplit guibg=Black guifg=Black ctermfg=None ctermbg=None
+    hi Normal guibg=Black ctermbg=None
+endfunction
+
+function! WordCount()
+    let s:old_status = v:statusmsg
+    let position = getpos(".")
+    exe ":silent normal g\<c-g>"
+    let stat = v:statusmsg
+    let s:word_count = 0
+    if stat != '--No lines in buffer--'
+        let s:word_count = str2nr(split(v:statusmsg)[11])
+        let v:statusmsg = s:old_status
+    end
+    call setpos('.', position)
+    return s:word_count 
+endfunction
+
+function! Status()
+    return expand('%:t') . ' : ' . WordCount() . ' words'
+endfunction
+
+autocmd ColorScheme * call Color()
+
+
+
+set nonu
+set laststatus=0
+set listchars=eol:↲
+set guioptions=ai
+set noruler
+set linebreak
+
+nnoremap <F3> :call ToggleEol()<CR>
+nnoremap <F4> :call TogglePadWindow()<CR>
+nnoremap <F5> :echo Status()<CR>
+
+
+nnoremap j gj
+nnoremap k gk
+
+
+call Color()
+call TogglePadWindow()
