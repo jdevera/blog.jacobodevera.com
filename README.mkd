@@ -5,3 +5,9 @@ These are the files that drive my blog:
 http://blog.jacobodevera.com
 
 I use Pelican to generate static pages.
+
+
+    $ pew new -r requirements blog -a `pwd`
+    $ pew workon blog
+    $ source tools/env
+    $ bwrite

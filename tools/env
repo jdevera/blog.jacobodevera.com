@@ -8,20 +8,20 @@ cdp()
     cd "$PROJECT"
 }
 
-__complete_write()
+__complete_bwrite()
 {
-    write --complete | grep --color=auto "^$2.*"
+    bwrite --complete | grep --color=auto "^$2.*"
 }
 
 draft()
 {
-    write "$@"
+    bwrite "$@"
 }
 
 __complete_draft()
 {
-    write --drafts |  grep --color=auto "^$2.*"
+    bwrite --drafts |  grep --color=auto "^$2.*"
 }
 
-complete -C __complete_write -o default write
+complete -C __complete_bwrite -o default bwrite
 complete -C __complete_draft -o default draft

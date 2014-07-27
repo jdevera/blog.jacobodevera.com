@@ -45,6 +45,7 @@ function! Color()
     hi Normal guibg=Black ctermbg=None
 endfunction
 
+" http://stackoverflow.com/a/4588161/116957
 function! WordCount()
     let s:old_status = v:statusmsg
     let position = getpos(".")
