@@ -45,8 +45,9 @@ def new_article(title=None, format='rst'):
         title = raw_input("Enter title:")
     words = unicode(" ".join(title.split()), "UTF-8")
     slug = make_slug(words)
-    filename = "{}.{}".format(slug, format)
-    file_path = os.path.join('content', 'articles', get_date("%Y"), get_date("%m"), filename)
+    filename = u"{}.{}".format(slug, format)
+    dir_path = os.path.join('content', 'articles', get_date("%Y"), get_date("%m"))
+    file_path = os.path.join(dir_path, filename)
     contents = None
     if format == 'rst':
         contents = textwrap.dedent(u"""\
@@ -66,7 +67,10 @@ def new_article(title=None, format='rst'):
                 """).format(title, get_date("%Y-%m-%d"))
 
     if contents is not None:
-        with open(file_path, 'w+') as f:
+        if not os.path.exists(dir_path):
+            print('Creating directory {}'.format(dir_path))
+            os.makedirs(dir_path)
+        with open(file_path, 'w') as f:
             f.write(contents.encode('utf-8'))
     print("New article: {}".format(file_path))
 
